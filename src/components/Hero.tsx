@@ -4,124 +4,75 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Gradient orbs */}
-      <div className="gradient-orb-1 -top-40 -left-40" />
-      <div className="gradient-orb-2 top-20 right-[-200px]" />
-      <div className="gradient-orb-3 bottom-[-100px] left-1/3" />
+    <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+      {/* Orbs */}
+      <div className="orb orb-1" />
+      <div className="orb orb-2" />
 
-      {/* Grid overlay */}
-      <div className="absolute inset-0 grid-pattern opacity-50" />
+      {/* Dot grid */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: "radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
 
       {/* Radial fade */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,black_70%)]" />
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 80% 60% at 50% 50%, transparent, #050505)" }} />
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+      <div className="container-main" style={{ position: "relative", zIndex: 10, textAlign: "center", paddingTop: 120, paddingBottom: 120 }}>
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.02] mb-8"
+          transition={{ duration: 0.7, delay: 0.2 }}
+          style={{ fontSize: 13, color: "#34d399", marginBottom: 24, letterSpacing: "0.05em" }}
         >
-          <span className="w-2 h-2 rounded-full bg-accent-1 animate-pulse" />
-          <span className="text-xs font-medium text-text-secondary tracking-wide uppercase">
-            AI-Powered Automation
-          </span>
-        </motion.div>
+          Intelligent Automation
+        </motion.p>
 
-        {/* Headline */}
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05] mb-6"
+          transition={{ duration: 0.9, delay: 0.3 }}
+          className="gradient-text"
+          style={{
+            fontSize: "clamp(40px, 7vw, 76px)",
+            fontWeight: 700,
+            letterSpacing: "-0.04em",
+            lineHeight: 1.08,
+            marginBottom: 24,
+          }}
         >
           We automate the work
           <br />
-          <span className="gradient-text">you hate doing.</span>
+          you hate doing.
         </motion.h1>
 
-        {/* Subheadline */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto mb-10 leading-relaxed"
+          transition={{ duration: 0.7, delay: 0.5 }}
+          style={{ fontSize: 16, color: "#999", maxWidth: 420, margin: "0 auto 40px", lineHeight: 1.6 }}
         >
-          aCubed AI builds intelligent automation that replaces manual, repetitive
-          business processes with AI agents that work around the clock.
+          AI agents that replace your manual, repetitive business processes. So you can focus on what matters.
         </motion.p>
 
-        {/* CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ duration: 0.7, delay: 0.65 }}
+          style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}
         >
-          <a
-            href="#contact"
-            className="glow-button text-sm font-medium px-8 py-3.5 rounded-full text-white"
-          >
-            Book a Free Consultation
-          </a>
-          <a
-            href="#services"
-            className="outline-button text-sm font-medium px-8 py-3.5 rounded-full text-text-secondary hover:text-white"
-          >
-            See What We Automate
-          </a>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.2 }}
-          className="mt-20"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-col items-center gap-2"
-          >
-            <span className="text-xs text-text-muted uppercase tracking-widest">
-              Scroll
-            </span>
-            <svg
-              width="16"
-              height="24"
-              viewBox="0 0 16 24"
-              fill="none"
-              className="text-text-muted"
-            >
-              <rect
-                x="1"
-                y="1"
-                width="14"
-                height="22"
-                rx="7"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              />
-              <motion.circle
-                animate={{ y: [0, 6, 0] }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                cx="8"
-                cy="8"
-                r="2"
-                fill="currentColor"
-              />
-            </svg>
-          </motion.div>
+          <a href="#contact" className="btn-primary">Book a Free Consultation</a>
+          <a href="#services" className="btn-secondary">Learn More</a>
         </motion.div>
       </div>
+
+      {/* Bottom fade */}
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 120, background: "linear-gradient(transparent, #050505)" }} />
     </section>
   );
 }

@@ -5,47 +5,37 @@ import { useRef } from "react";
 
 export default function CTA() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="contact" className="relative py-32 px-6">
-      <div className="section-divider mb-32" />
+    <section id="contact" style={{ paddingTop: 80, paddingBottom: 120 }}>
+      <div className="container-main" style={{ textAlign: "center" }} ref={ref}>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          style={{ fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 700, letterSpacing: "-0.03em", marginBottom: 16 }}
+        >
+          Stop doing it manually.
+        </motion.h2>
 
-      <div className="max-w-4xl mx-auto text-center" ref={ref}>
-        {/* Background orbs */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-accent-1/5 blur-[100px] pointer-events-none" />
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.08 }}
+          style={{ fontSize: 15, color: "#999", maxWidth: 380, margin: "0 auto 36px" }}
+        >
+          Free consultation. We&apos;ll show you exactly what we can automate.
+        </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="relative z-10"
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.15 }}
         >
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-            Ready to stop doing
-            <br />
-            <span className="gradient-text-accent">everything manually?</span>
-          </h2>
-
-          <p className="text-text-secondary text-lg max-w-xl mx-auto mb-10">
-            Book a free consultation. We&apos;ll walk through your operations and
-            show you exactly what can be automated and the ROI you&apos;ll see.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="mailto:ahmedaali1996@gmail.com"
-              className="glow-button text-sm font-medium px-10 py-4 rounded-full text-white"
-            >
-              Book a Free Consultation
-            </a>
-            <a
-              href="mailto:ahmedaali1996@gmail.com"
-              className="outline-button text-sm font-medium px-10 py-4 rounded-full text-text-secondary hover:text-white"
-            >
-              ahmedaali1996@gmail.com
-            </a>
-          </div>
+          <a href="mailto:ahmedaali1996@gmail.com" className="btn-primary">
+            Get Started
+          </a>
         </motion.div>
       </div>
     </section>

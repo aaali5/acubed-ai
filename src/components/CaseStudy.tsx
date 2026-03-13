@@ -6,82 +6,48 @@ import { useRef } from "react";
 const stats = [
   { value: "4+", label: "Hours saved per pay period" },
   { value: "0", label: "Manual errors" },
-  { value: "100%", label: "Automated end-to-end" },
+  { value: "100%", label: "End-to-end automated" },
 ];
 
 export default function CaseStudy() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="results" className="relative py-32 px-6">
-      <div className="section-divider mb-32" />
-
-      <div className="max-w-5xl mx-auto" ref={ref}>
-        {/* Section header */}
+    <section id="results" style={{ paddingTop: 60, paddingBottom: 80 }}>
+      <div className="container-main" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="card"
+          style={{ padding: "clamp(32px, 5vw, 64px)", position: "relative", overflow: "hidden" }}
         >
-          <span className="text-xs font-medium text-accent-1 uppercase tracking-widest mb-4 block">
-            Real Results
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-            From hours of manual work
-            <br />
-            <span className="gradient-text-accent">to zero</span>
-          </h2>
-        </motion.div>
+          {/* Accent glow */}
+          <div style={{ position: "absolute", top: -80, right: -80, width: 300, height: 300, background: "rgba(52,211,153,0.04)", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none" }} />
 
-        {/* Case study card */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="glass-card rounded-3xl p-10 md:p-14 relative overflow-hidden"
-        >
-          {/* Background accent */}
-          <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-accent-1/10 to-transparent rounded-full blur-3xl" />
+          <div style={{ position: "relative" }}>
+            <p style={{ fontSize: 11, color: "#34d399", marginBottom: 20, letterSpacing: "0.1em", textTransform: "uppercase" }}>Case Study</p>
 
-          <div className="relative z-10">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-3 h-3 rounded-full bg-accent-1/50" />
-              <span className="text-xs font-medium text-text-muted uppercase tracking-wider">
-                Case Study
-              </span>
-            </div>
-
-            <h3 className="text-2xl md:text-3xl font-semibold mb-4 max-w-2xl">
-              Automating payroll for a family-owned business
+            <h3 style={{ fontSize: "clamp(24px, 3.5vw, 36px)", fontWeight: 700, letterSpacing: "-0.03em", marginBottom: 16, maxWidth: 480 }}>
+              Payroll that runs itself
             </h3>
 
-            <p className="text-text-secondary leading-relaxed max-w-2xl mb-10">
+            <p style={{ fontSize: 15, color: "#999", lineHeight: 1.65, maxWidth: 520, marginBottom: 48 }}>
               A family-owned business was spending hours every pay period doing
-              payroll manually in a browser. Calculating hours, tax withholdings,
-              deductions, direct deposits. All by hand. We built an AI agent that
-              handles the entire process automatically, from timesheet
-              collection to payment disbursement, with zero manual intervention.
+              payroll by hand in a browser. We replaced the entire workflow with
+              an AI agent. Zero manual input required.
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6">
-              {stats.map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.4 + 0.1 * i }}
-                  className="text-center md:text-left"
-                >
-                  <div className="text-3xl md:text-4xl font-bold gradient-text-accent mb-1">
-                    {stat.value}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: 32 }}>
+              {stats.map((s) => (
+                <div key={s.label}>
+                  <div style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 700, color: "#fff", marginBottom: 4 }}>
+                    {s.value}
                   </div>
-                  <div className="text-xs md:text-sm text-text-muted">
-                    {stat.label}
-                  </div>
-                </motion.div>
+                  <div style={{ fontSize: 12, color: "#666" }}>{s.label}</div>
+                </div>
               ))}
             </div>
           </div>

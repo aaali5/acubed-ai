@@ -4,92 +4,60 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const steps = [
-  {
-    number: "01",
-    title: "Discovery",
-    description:
-      "We analyze your current workflows and identify the processes costing you the most time and money. No jargon, just a clear picture of what can be automated.",
-  },
-  {
-    number: "02",
-    title: "Build & Deploy",
-    description:
-      "Our team designs and deploys custom AI agents tailored to your operations. We handle everything from development to integration with your existing tools.",
-  },
-  {
-    number: "03",
-    title: "Monitor & Scale",
-    description:
-      "Go live with confidence. We monitor performance, optimize continuously, and scale your automation as your business grows.",
-  },
+  { title: "Discovery", desc: "We map your workflows and find what costs you the most time and money." },
+  { title: "Build", desc: "Custom AI agents, deployed and integrated with your existing tools." },
+  { title: "Scale", desc: "We monitor, optimize, and grow your automation over time." },
 ];
 
 export default function HowItWorks() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="process" className="relative py-32 px-6">
-      <div className="section-divider mb-32" />
-
-      <div className="max-w-5xl mx-auto" ref={ref}>
-        {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+    <section id="process" style={{ paddingTop: 80, paddingBottom: 60 }}>
+      <div className="container-main" ref={ref}>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5 }}
+          style={{ fontSize: 13, color: "#34d399", marginBottom: 16, letterSpacing: "0.05em" }}
         >
-          <span className="text-xs font-medium text-accent-1 uppercase tracking-widest mb-4 block">
-            Our Process
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-            From manual to
-            <br />
-            <span className="gradient-text-accent">fully automated</span>
-          </h2>
-          <p className="text-text-secondary text-lg max-w-xl mx-auto">
-            A straightforward process that gets your business running on
-            autopilot.
-          </p>
-        </motion.div>
+          Process
+        </motion.p>
 
-        {/* Steps */}
-        <div className="relative">
-          {/* Connector line */}
-          <div className="hidden md:block absolute left-[60px] top-0 bottom-0 w-px step-line opacity-20" />
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.05 }}
+          style={{ fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 700, letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: 64, maxWidth: 460 }}
+        >
+          From manual to fully automated
+        </motion.h2>
 
-          <div className="space-y-16">
-            {steps.map((step, i) => (
-              <motion.div
-                key={step.number}
-                initial={{ opacity: 0, x: -40 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.2 * i }}
-                className="flex gap-8 items-start group"
-              >
-                {/* Number */}
-                <div className="flex-shrink-0 w-[120px] hidden md:flex items-center justify-center">
-                  <span className="text-6xl font-bold text-white/[0.04] group-hover:text-accent-1/20 transition-colors duration-500">
-                    {step.number}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div className="glass-card rounded-2xl p-8 flex-1">
-                  <div className="flex items-center gap-4 mb-4">
-                    <span className="md:hidden text-sm font-mono text-accent-1">
-                      {step.number}
-                    </span>
-                    <h3 className="text-2xl font-semibold">{step.title}</h3>
-                  </div>
-                  <p className="text-text-secondary leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        <div>
+          {steps.map((step, i) => (
+            <motion.div
+              key={step.title}
+              initial={{ opacity: 0, y: 16 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
+              style={{
+                display: "flex",
+                gap: 24,
+                alignItems: "baseline",
+                padding: "28px 0",
+                borderTop: "1px solid rgba(255,255,255,0.06)",
+              }}
+            >
+              <span style={{ fontSize: 11, color: "#444", fontFamily: "var(--font-mono), monospace", flexShrink: 0, width: 28 }}>
+                0{i + 1}
+              </span>
+              <div>
+                <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 8 }}>{step.title}</h3>
+                <p style={{ fontSize: 14, color: "#999", lineHeight: 1.6, maxWidth: 460 }}>{step.desc}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
