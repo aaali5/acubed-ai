@@ -42,9 +42,9 @@ export default function Navbar() {
     >
       <div className="container-main" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         {/* Logo */}
-        <a href="#" style={{ fontSize: 15, fontWeight: 600, color: "#ededed", textDecoration: "none", letterSpacing: "-0.01em" }}>
-          a<sup style={{ fontSize: 9, color: "#34d399", position: "relative", top: -5 }}>3</sup>
-          <span style={{ color: "#666", fontWeight: 500, marginLeft: 6 }}>AI</span>
+        <a href="#" style={{ fontSize: 18, fontWeight: 600, color: "#ededed", textDecoration: "none", letterSpacing: "-0.01em" }}>
+          a<sup style={{ fontSize: 11, color: "#34d399", position: "relative", top: -6 }}>3</sup>
+          <span style={{ color: "#888", fontWeight: 500, marginLeft: 6 }}>AI</span>
         </a>
 
         {/* Nav links + CTA */}
@@ -54,7 +54,7 @@ export default function Navbar() {
               key={l.label}
               href={l.href}
               style={{
-                fontSize: 13,
+                fontSize: 14,
                 color: "#666",
                 textDecoration: "none",
                 transition: "color 0.2s",

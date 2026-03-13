@@ -23,7 +23,7 @@ export default function Hero() {
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 80% 60% at 50% 50%, transparent, #050505)" }} />
 
       {/* Content */}
-      <div className="container-main" style={{ position: "relative", zIndex: 10, textAlign: "center", paddingTop: 120, paddingBottom: 120 }}>
+      <div className="container-main" style={{ position: "relative", zIndex: 10, textAlign: "center", paddingTop: 120, paddingBottom: 120, maxWidth: "100%", boxSizing: "border-box" as const }}>
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -39,11 +39,12 @@ export default function Hero() {
           transition={{ duration: 0.9, delay: 0.3 }}
           className="gradient-text"
           style={{
-            fontSize: "clamp(40px, 7vw, 76px)",
+            fontSize: "clamp(32px, 5.5vw, 76px)",
             fontWeight: 700,
             letterSpacing: "-0.04em",
             lineHeight: 1.08,
             marginBottom: 24,
+            wordBreak: "break-word" as const,
           }}
         >
           We automate the work
